@@ -1,0 +1,23 @@
+# Data files
+data/raw/*
+data/processed/*
+*.csv
+*.xlsx
+*.zip
+
+# Keep folder structure
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.pyc
+
+# System files
+.DS_Store
+Thumbs.db
+
+*.docx
