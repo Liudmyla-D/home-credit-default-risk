@@ -49,4 +49,4 @@ SELECT
     ROUND(AVG(TARGET) * 100, 2) AS default_rate
 FROM prev_groups
 GROUP BY previous_applications_group, sort_order
-ORDER BY sort_order
+ORDER BY sort_order;

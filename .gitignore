@@ -23,3 +23,5 @@ Thumbs.db
 *.docx
 
 notebooks/home_credit_analysis.ipynb
+
+*.twbx

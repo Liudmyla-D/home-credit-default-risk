@@ -18,4 +18,4 @@ ORDER BY
         WHEN '3-5' THEN 4
         WHEN '5-10' THEN 5
         WHEN '10+' THEN 6
-    END
+    END;
