@@ -1,6 +1,17 @@
 # Home Credit Default Risk Analysis
 
-## Project Overview
+![Python](https://img.shields.io/badge/Python-3.12-blue)
+![SQL](https://img.shields.io/badge/SQL-DuckDB-4B8BBE)
+![Tableau](https://img.shields.io/badge/Tableau-Public-E97627)
+![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626)
+![Dataset](https://img.shields.io/badge/Dataset-Kaggle-20BEFF)
+![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
+![Project](https://img.shields.io/badge/Portfolio-Data%20Analytics-purple)
+
+Client default risk analysis based on the Kaggle Home Credit Default Risk dataset.  
+The project covers data preparation, EDA, SQL analysis, hypothesis testing, baseline modeling and Tableau dashboards.
+
+## 📌 Project Overview
 
 This project analyzes the **Home Credit Default Risk** dataset from Kaggle to identify client segments and previous application patterns associated with a higher probability of default.
 
@@ -10,7 +21,44 @@ The main goal is not only to build a model, but also to understand which factors
 
 ---
 
-## Dataset
+## 🔗 Quick Links
+
+- [Interactive Tableau Dashboard](https://public.tableau.com/app/profile/liudmyl.sibikovska/viz/home_credit_default_risk_dashboard/ClientsRiskOverview)
+- [Python Notebooks](notebooks/)
+- [SQL Queries](sql/)
+- [Dashboard Screenshots](visuals/)
+
+---
+
+## 📊 Project Status
+
+| Component | Status |
+|---|---|
+| Data preparation and feature engineering | ✅ Complete |
+| Exploratory data analysis | ✅ Complete |
+| Previous applications analysis | ✅ Complete |
+| SQL analysis with DuckDB | ✅ Complete |
+| Hypothesis testing | ✅ Complete |
+| Baseline machine learning model | ✅ Complete |
+| Tableau dashboards | ✅ Published |
+| GitHub documentation | ✅ Complete |
+
+---
+
+## ⭐ Project Highlights
+
+| Area | Result |
+|---|---|
+| Dataset size | 307,511 client applications |
+| Overall default rate | 8.07% |
+| Highest risk age segment | Clients aged 20–29 |
+| Key financial signal | Credit-to-income ratio groups 2–3× and 3–5× |
+| Previous application signal | Refused history and revolving products are associated with higher default risk |
+| Final outputs | 5 notebooks, 3 SQL queries, 2 Tableau dashboards |
+
+---
+
+## 📁 Dataset
 
 Dataset: **Home Credit Default Risk**  
 Source: Kaggle
@@ -24,7 +72,7 @@ Raw data is not uploaded to this repository due to dataset size and Kaggle usage
 
 ---
 
-## Key Analytical Questions
+## ❓ Key Analytical Questions
 
 This project answers the following questions:
 
@@ -39,7 +87,7 @@ This project answers the following questions:
 
 ---
 
-## Tools and Technologies
+## 🛠 Tools and Technologies
 
 - **Python** — data preparation, EDA, hypothesis testing and baseline modeling;
 - **pandas / numpy** — data manipulation;
@@ -52,7 +100,7 @@ This project answers the following questions:
 
 ---
 
-## Project Structure
+## 🗂 Project Structure
 
 ```text
 home-credit-default-risk/
@@ -79,7 +127,7 @@ home-credit-default-risk/
 
 ---
 
-## Notebooks
+## 📓 Notebooks
 
 ### `01_data_preparation.ipynb`
 
@@ -134,7 +182,7 @@ Final summary of key insights, business interpretation and recommendations based
 
 ---
 
-## SQL Analysis
+## 🧮 SQL Analysis
 
 SQL queries are stored separately in the `sql/` folder.
 
@@ -153,7 +201,7 @@ These queries were executed with DuckDB inside the Python notebook.
 
 ---
 
-## Tableau Dashboard
+## 📊 Tableau Dashboard
 
 Interactive dashboard is available on Tableau Public:
 
@@ -187,7 +235,7 @@ This dashboard focuses on how previous credit history is related to current defa
 
 ---
 
-## Key Insights
+## 🔍 Key Insights
 
 - The overall default rate is **8.07%**.
 - The highest default risk is observed among clients aged **20–29**.
@@ -199,15 +247,23 @@ This dashboard focuses on how previous credit history is related to current defa
 
 ---
 
-## Hypothesis Testing
+## 🧪 Hypothesis Testing
 
-A statistical hypothesis test was used to check whether clients with previous refused applications have a different default rate compared to clients without refused history.
+Several analytical hypotheses were tested to check whether previous application history and financial indicators are associated with default risk.
 
-The result supports the idea that previous refused applications are associated with higher default risk and can be used as an additional risk segmentation signal.
+The goal of this section was not only to calculate differences, but also to understand which factors may be useful for risk segmentation.
+
+| Hypothesis | Method / Comparison | Result | Business Interpretation |
+|---|---|---|---|
+| Clients with previous refused applications have a higher default risk than clients without refused history. | Compared default rate between clients with and without refused previous applications. | Supported | Previous refused applications can be used as an additional risk signal. |
+| Clients with previous revolving loan history have a higher default risk. | Compared default rate for clients with and without previous revolving products. | Supported | Revolving loan history may indicate higher credit risk and should be monitored. |
+| Credit-to-income ratio is related to default risk. | Compared default rate across credit-to-income ratio groups. | Supported | Medium credit-to-income load groups showed higher default risk than the lowest groups. |
+| Age group is associated with default risk. | Compared default rate across client age groups. | Supported | Younger clients, especially age 20–29, showed the highest default rate. |
+| Previous application behavior provides additional segmentation value. | Combined previous refused history, revolving product history and offer gap groups. | Supported | Previous application patterns help identify higher-risk client segments when combined with financial indicators. |
 
 ---
 
-## Baseline Machine Learning Model
+## 🤖 Baseline Machine Learning Model
 
 A simple baseline machine learning model was built to test whether selected client-level and previous-application features can be used for default prediction.
 
@@ -221,7 +277,7 @@ Main purpose:
 
 ---
 
-## Business Recommendations
+## 💡 Business Recommendations
 
 Based on the analysis, the following recommendations can be considered:
 
@@ -234,7 +290,7 @@ Based on the analysis, the following recommendations can be considered:
 
 ---
 
-## How to Run the Project
+## ▶️ How to Run the Project
 
 1. Clone the repository:
 
@@ -268,7 +324,7 @@ data/raw/
 
 ---
 
-## Repository Notes
+## 📝 Repository Notes
 
 - Raw data files are not included in the repository.
 - Processed data files are also excluded from Git tracking.
@@ -277,7 +333,7 @@ data/raw/
 
 ---
 
-## Author
+## 👤 Author
 
 **Liudmyla Sibikovska**  
 Data Analyst
