@@ -24,4 +24,7 @@ Thumbs.db
 
 notebooks/home_credit_analysis.ipynb
 
+*.twb
 *.twbx
+*.twb*
+~*.twb*

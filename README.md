@@ -74,16 +74,20 @@ Raw data is not uploaded to this repository due to dataset size and Kaggle usage
 
 ## ❓ Key Analytical Questions
 
-This project answers the following questions:
+The project focuses on 10 analytical questions:
 
-- What is the overall default rate?
-- Which client segments have the highest default risk?
-- Is credit-to-income ratio related to default risk?
-- How does default risk differ by age and education level?
-- Are previous refused applications associated with higher current default risk?
-- Does previous revolving loan history indicate higher risk?
-- How does offer gap in previous applications relate to current default risk?
-- Can a simple baseline machine learning model identify default risk patterns?
+1. What is the overall default rate?
+2. Which client segments have the highest default risk?
+3. Is credit-to-income ratio related to default risk?
+4. What is the distribution of previous application statuses?
+5. Is previous application status associated with current default risk?
+6. Which previous contract type has the highest default rate?
+7. Is offer gap in previous applications related to current default risk?
+8. How does default rate change across credit-to-income groups in SQL analysis?
+9. Is the number of previous applications related to default risk?
+10. Which combination of previous status and contract type has the highest default rate?
+
+Additionally, the project includes a statistical hypothesis test and a simple baseline machine learning model.
 
 ---
 
@@ -129,75 +133,29 @@ home-credit-default-risk/
 
 ## 📓 Notebooks
 
-### `01_data_preparation.ipynb`
-
-Initial data loading, structure review, data quality checks, basic cleaning and feature engineering.
-
-Main steps:
-
-- loading the main datasets;
-- checking table size, data types and missing values;
-- reviewing key columns and target distribution;
-- handling special values;
-- creating analytical features such as age, employment years, credit-to-income ratio and grouped segments;
-- saving prepared datasets for further analysis.
-
-### `02_eda_previous_applications.ipynb`
-
-Exploratory analysis of previous applications and their relationship with current default status.
-
-Main focus:
-
-- previous application status;
-- previous contract type;
-- number of previous applications per client;
-- refused previous applications;
-- revolving loan history;
-- offer gap between requested and approved credit amount.
-
-### `03_sql_tableau_data.ipynb`
-
-SQL analysis using DuckDB and preparation of datasets for Tableau dashboards.
-
-Main outputs:
-
-- SQL-based default rate analysis;
-- client-level dataset for Tableau;
-- dashboard-ready fields and grouped dimensions.
-
-### `04_hypothesis_and_modeling.ipynb`
-
-Statistical hypothesis testing and a simple baseline machine learning model.
-
-Main focus:
-
-- checking whether previous refused applications are associated with default risk;
-- preparing features for modeling;
-- training a baseline model;
-- evaluating basic model performance.
-
-### `05_key_insights_recommendations.ipynb`
-
-Final summary of key insights, business interpretation and recommendations based on the analysis.
+| Notebook | Purpose |
+|---|---|
+| `01_data_preparation.ipynb` | Data loading, structure review, cleaning and feature engineering |
+| `02_eda_previous_applications.ipynb` | Exploratory analysis of client segments and previous applications |
+| `03_sql_tableau_data.ipynb` | SQL analysis with DuckDB and preparation of Tableau datasets |
+| `04_hypothesis_and_modeling.ipynb` | Hypothesis testing and baseline machine learning model |
+| `05_key_insights_recommendations.ipynb` | Final insights, business interpretation and recommendations |
 
 ---
 
 ## 🧮 SQL Analysis
 
-SQL queries are stored separately in the `sql/` folder.
+DuckDB SQL was used to validate key patterns and prepare aggregated views for Tableau.
 
-The SQL part includes:
+Main SQL outputs:
 
-1. **Default rate by credit-to-income group**  
-   File: `q01_default_rate_by_credit_income_group.sql`
+| Analysis Area | Business Purpose |
+|---|---|
+| Credit-to-income groups | Compare default rate across financial load segments |
+| Previous applications count | Check whether repeated previous applications are associated with higher risk |
+| Previous status × product type | Identify risky combinations of previous application status and contract type |
 
-2. **Default rate by number of previous applications**  
-   File: `q02_default_rate_by_previous_applications_count.sql`
-
-3. **Default rate by previous application status and product type**  
-   File: `q03_default_rate_by_previous_status_and_product_type.sql`
-
-These queries were executed with DuckDB inside the Python notebook.
+SQL queries are stored in the `sql/` folder for readability and reproducibility.
 
 ---
 
@@ -247,19 +205,21 @@ This dashboard focuses on how previous credit history is related to current defa
 
 ---
 
-## 🧪 Hypothesis Testing
+## 🧪 Hypothesis Testing and Analytical Findings
 
-Several analytical hypotheses were tested to check whether previous application history and financial indicators are associated with default risk.
+The analysis tested whether selected client and previous-application factors are associated with default risk.
 
-The goal of this section was not only to calculate differences, but also to understand which factors may be useful for risk segmentation.
+| Hypothesis / Factor | Key Comparison | Result | Interpretation |
+|---|---:|---|---|
+| Younger clients have higher default risk | Age 20–29: **11.5%** vs overall **8.07%** | Supported | Younger clients show the highest observed default rate |
+| Credit-to-income ratio is related to default risk | 2–3×: **8.7%**, 3–5×: **8.8%** vs overall **8.07%** | Supported | Medium credit-to-income load is associated with higher risk |
+| Previous refused applications indicate higher risk | Refused: **10.3%** vs no refused: **7.0%** | Supported | Refused history is a strong additional risk signal |
+| Previous revolving product history indicates higher risk | Has revolving loans: **9.5%** vs no revolving loans: **7.3%** | Supported | Revolving loan history may indicate higher credit risk |
+| Number of previous applications is related to default risk | 0 previous apps: **6.0%** vs 6+ apps: **8.7%** | Supported | Higher previous application activity is associated with higher default risk |
+| Offer gap is related to default risk | Higher approved amount: **8.7%** vs no approved previous app: **6.1%** | Supported | Offer gap can help segment previous-application risk |
+| Combination of refused history and revolving product is riskier | Refused + revolving: **11.2%** | Supported | Combined previous-application signals identify the riskiest segment |
 
-| Hypothesis | Method / Comparison | Result | Business Interpretation |
-|---|---|---|---|
-| Clients with previous refused applications have a higher default risk than clients without refused history. | Compared default rate between clients with and without refused previous applications. | Supported | Previous refused applications can be used as an additional risk signal. |
-| Clients with previous revolving loan history have a higher default risk. | Compared default rate for clients with and without previous revolving products. | Supported | Revolving loan history may indicate higher credit risk and should be monitored. |
-| Credit-to-income ratio is related to default risk. | Compared default rate across credit-to-income ratio groups. | Supported | Medium credit-to-income load groups showed higher default risk than the lowest groups. |
-| Age group is associated with default risk. | Compared default rate across client age groups. | Supported | Younger clients, especially age 20–29, showed the highest default rate. |
-| Previous application behavior provides additional segmentation value. | Combined previous refused history, revolving product history and offer gap groups. | Supported | Previous application patterns help identify higher-risk client segments when combined with financial indicators. |
+These findings are used for risk segmentation and business interpretation, not as standalone credit scoring rules.
 
 ---
 
