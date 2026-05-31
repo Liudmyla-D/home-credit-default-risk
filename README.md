@@ -202,6 +202,8 @@ This dashboard focuses on how previous credit history is related to current defa
 - Clients with previous revolving loan history also show higher default risk.
 - The riskiest previous-application segment combines refused application history and revolving product history.
 - Previous application behavior provides useful risk signals, but it should be combined with financial and demographic client-level indicators.
+- The baseline machine learning model showed that selected features contain some predictive signal, but class imbalance remains a key limitation.
+- Class imbalance (8.07% default rate) is a structural challenge: the baseline model tends to predict the majority class, which highlights the need for class balancing in future iterations.
 
 ---
 
@@ -211,13 +213,13 @@ The analysis tested whether selected client and previous-application factors are
 
 | Hypothesis / Factor | Key Comparison | Result | Interpretation |
 |---|---:|---|---|
-| Younger clients have higher default risk | Age 20–29: **11.5%** vs overall **8.07%** | Supported | Younger clients show the highest observed default rate |
-| Credit-to-income ratio is related to default risk | 2–3×: **8.7%**, 3–5×: **8.8%** vs overall **8.07%** | Supported | Medium credit-to-income load is associated with higher risk |
-| Previous refused applications indicate higher risk | Refused: **10.3%** vs no refused: **7.0%** | Supported | Refused history is a strong additional risk signal |
-| Previous revolving product history indicates higher risk | Has revolving loans: **9.5%** vs no revolving loans: **7.3%** | Supported | Revolving loan history may indicate higher credit risk |
-| Number of previous applications is related to default risk | 0 previous apps: **6.0%** vs 6+ apps: **8.7%** | Supported | Higher previous application activity is associated with higher default risk |
-| Offer gap is related to default risk | Higher approved amount: **8.7%** vs no approved previous app: **6.1%** | Supported | Offer gap can help segment previous-application risk |
-| Combination of refused history and revolving product is riskier | Refused + revolving: **11.2%** | Supported | Combined previous-application signals identify the riskiest segment |
+| Younger clients have higher default risk | Age 20–29: **11.5%** vs overall **8.07%** | Observed pattern | Younger clients show the highest observed default rate |
+| Credit-to-income ratio is related to default risk | 2–3×: **8.7%**, 3–5×: **8.8%** vs overall **8.07%** | Observed pattern | Medium credit-to-income load is associated with higher risk |
+| Previous refused applications indicate higher risk | Refused: **10.3%** vs no refused: **7.0%** | Statistically supported | Refused history is a strong additional risk signal |
+| Previous revolving product history indicates higher risk | Has revolving loans: **9.5%** vs no revolving loans: **7.3%** | Observed pattern | Revolving loan history may indicate higher credit risk |
+| Number of previous applications is related to default risk | 0 previous apps: **6.0%** vs 6+ apps: **8.7%** | Observed pattern | Higher previous application activity is associated with higher default risk |
+| Offer gap may provide additional segmentation value | Higher approved amount: **8.1%** vs lower approved amount: **6.7%** | Exploratory / needs validation | The pattern is weak and should be used only as a secondary feature, not as a standalone risk signal |
+| Combination of refused history and revolving product is riskier | Refused + revolving: **11.2%** | Observed pattern | Combined previous-application signals identify the riskiest segment |
 
 These findings are used for risk segmentation and business interpretation, not as standalone credit scoring rules.
 
@@ -247,6 +249,19 @@ Based on the analysis, the following recommendations can be considered:
 - Consider previous revolving loan history as a potential indicator of higher default risk.
 - Combine client financial indicators with previous application behavior for better segmentation.
 - Use dashboards to explore risk patterns by client segment before making business decisions.
+- Consider periodic refresh of dashboard filters to align with current portfolio composition.
+
+---
+
+## 🚀 Next Steps
+
+The following directions can extend and improve this analysis:
+
+- Address class imbalance — apply SMOTE or class_weight='balanced' to improve recall for the minority class (default clients).
+- Expand the feature set — add income type, region, employment sector, and interaction features between demographics and previous application history.
+- Build a second model — benchmark Logistic Regression against LightGBM or Random Forest to measure the uplift from a more complex approach.
+- Automate risk segmentation — schedule periodic refresh of Tableau dashboards to align with portfolio composition changes over time.
+- Explore time-based patterns — if timestamps are available, analyze whether default risk shifts across application periods or economic cycles.
 
 ---
 
