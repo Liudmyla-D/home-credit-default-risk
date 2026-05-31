@@ -28,3 +28,6 @@ notebooks/home_credit_analysis.ipynb
 *.twbx
 *.twb*
 ~*.twb*
+
+~$*
+*.pptx
