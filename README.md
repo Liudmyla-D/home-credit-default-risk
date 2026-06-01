@@ -23,14 +23,13 @@ The main goal is not only to build a model, but also to understand which factors
 
 ## 🔗 Quick Links
 
-- [Interactive Tableau Dashboard](https://public.tableau.com/app/profile/liudmyl.sibikovska/viz/home_credit_default_risk_dashboard/ClientsRiskOverview)
+- [Project PDF Report](home_credit_report.pdf)
+- [Interactive Tableau Dashboard](твоє_посилання)
 - [Python Notebooks](notebooks/)
 - [SQL Queries](sql/)
 - [Dashboard Screenshots](visuals/)
 
----
-
-> If GitHub notebook preview does not load, use nbviewer links below.
+> If GitHub notebook preview does not load, notebooks can be downloaded from GitHub or viewed later via nbviewer.
 
 - [01 Data preparation](https://nbviewer.org/github/Liudmyla-D/home-credit-default-risk/blob/main/notebooks/01_data_preparation.ipynb)
 - [02 EDA previous applications](https://nbviewer.org/github/Liudmyla-D/home-credit-default-risk/blob/main/notebooks/02_eda_previous_applications.ipynb)
