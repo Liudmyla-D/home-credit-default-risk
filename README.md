@@ -108,22 +108,15 @@ Additionally, the project includes a statistical hypothesis test and a simple ba
 
 ```text
 home-credit-default-risk/
+│
 ├── data/
-│   ├── raw/
-│   └── processed/
 ├── notebooks/
-│   ├── 01_data_preparation.ipynb
-│   ├── 02_eda_previous_applications.ipynb
-│   ├── 03_sql_tableau_data.ipynb
-│   ├── 04_hypothesis_and_modeling.ipynb
-│   └── 05_key_insights_recommendations.ipynb
 ├── sql/
-│   ├── q01_default_rate_by_credit_income_group.sql
-│   ├── q02_default_rate_by_previous_applications_count.sql
-│   └── q03_default_rate_by_previous_status_and_product_type.sql
 ├── visuals/
 │   ├── client_risk_overview.png
 │   └── previous_applications_impact.png
+│
+├── home_credit_report.pdf
 ├── requirements.txt
 ├── README.md
 └── .gitignore
