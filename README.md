@@ -24,7 +24,7 @@ The main goal is not only to build a model, but also to understand which factors
 ## 🔗 Quick Links
 
 - [Project PDF Report](home_credit_report.pdf)
-- [Interactive Tableau Dashboard](твоє_посилання)
+- [Interactive Tableau Dashboard](https://public.tableau.com/app/profile/liudmyl.sibikovska/viz/home_credit_default_risk_dashboard/ClientsRiskOverview)
 - [Python Notebooks](notebooks/)
 - [SQL Queries](sql/)
 - [Dashboard Screenshots](visuals/)
